@@ -1,0 +1,285 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" name="viewport content=”width=device-width, initial-scale=1.0"> <!-- Layout [9] — technique. Responsive. - Enable text resizing. -->
+        <link href="week-3.css" rel="stylesheet">
+
+        <title>Digital Accessibility for front-end developers</title>
+        <meta name="description" content="Activity for Digital Accessibility for front-end developers">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <header> <!-- Semantic Markup [1] — techniques -->
+                
+                <img src="https://projects.iq.harvard.edu/files/digital-accessibility-developers/files/img_modules.png?m=1579782434"
+                    alt="thematic image" width="100%"> <!-- Images [10] — techniques - Provide useful alternative text. -->
+                
+                <h1> <!-- Semantic Markup [1] — techniques - Use heading structure. -->
+                    Digital Accessibility for front-end developers
+                </h1>
+                
+            </header>
+
+            <section aria-label="Navigation"> <!-- Colors [8] — techniques - Indicate accessible current page without reliance on colors. -->
+                
+                <div class="navigation">
+                    <ul class="navigation">
+                        <li class="navigation"><a href="#" class="navigation">Week 1</a></li>
+                        <li class="navigation"><a href="#" class="navigation">Week 2</a></li>
+                        <li class="active"><a href="#" class="active">Week 3</a></li>
+                        <li class="navigation"><a href="#" class="navigation">Week 4</a></li>
+                        <li class="navigation"><a href="#" class="navigation">Week 5</a></li>
+                        <li class="navigation"><a href="#" class="navigation">Week 6</a></li>
+                    </ul>
+                </div>
+                
+            </section>
+
+            <main> <!-- Semantic Markup [1] — techniques - Create Main Landmark. -->
+                
+                <!-- https://www.scruminc.com/definition-of-ready/ -->
+                <section aria-label="Definition of ready">
+                    <h2>
+                        Definition of ready
+                    </h2>
+
+                    <div class="form-align">
+                        <input id="requirement1" type="checkbox" name="requirement1" value="requirement1" class="form-align-input">
+                        <label for="requirement1">
+                            Each user story or development task defines the business needs. <!-- Input Labels [2] — techniques - Create descriptive input labels. -->
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement2" type="checkbox" name="requirement2" value="requirement2" class="form-align-input">
+                        <label for="requirement2">
+                            Each user story or development task defines the user needs, including accessibility.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement3" type="checkbox" name="requirement3" value="requirement3" class="form-align-input">
+                        <label for="requirement3">
+                            Each user story is described with a short, simple description of a feature told from the
+                            perspective of the person who desires the new capability:
+    <pre>"As a &lt;type of user&gt;, 
+    I want &lt;some goal&gt; 
+    so that &lt;some reason&gt;."</pre>
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement4" type="checkbox" name="requirement4" value="requirement4" class="form-align-input">
+                        <label for="requirement4">
+                            Each user story or development task defines the necessary effort (investigation, research,
+                            design, etc.) and artifacts (findings, wireframes, prototypes).
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement5" type="checkbox" name="requirement5" value="requirement5" class="form-align-input">
+                        <label for="requirement5">
+                            Each user story or development task defines the acceptance criteria, which confirms when the
+                            user story is completed by meeting the above requirements.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement6" type="checkbox" name="requirement6" value="requirement6" class="form-align-input">
+                        <label for="requirement6">
+                            The entire team meets to understand each user story or development task.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement7" type="checkbox" name="requirement7" value="requirement7" class="form-align-input">
+                        <label for="requirement7">
+                            The team estimates the effort needed for each user story or development task to be completed within one sprint.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement8" type="checkbox" name="requirement8" value="requirement8" class="form-align-input">
+                        <label for="requirement8">
+                            The team eliminates any dependencies.
+                        </label>
+                    </div>
+                </section>
+
+                <section aria-label="Definition of done">
+                    <h2>
+                        Definition of done
+                    </h2>
+                    <div class="form-align">
+                        <input id="requirement1" type="checkbox" name="requirement1" value="requirement1" class="form-align-input">
+                        <label for="requirement1">
+                            Development tasks have been implemented according to the acceptance criteria.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement2" type="checkbox" name="requirement2" value="requirement2" class="form-align-input">
+                        <label for="requirement2">
+                            Development tasks have been tested to meet the acceptance criteria.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement3" type="checkbox" name="requirement3" value="requirement3" class="form-align-input">
+                        <label for="requirement3">
+                            Code can be moved to "production" and viewed by the client.
+                        </label>
+                    </div>
+                    <div hidden>
+                        <input id="requirement4" type="checkbox" name="requirement4" value="requirement4" class="form-align-input">
+                        <label for="requirement4">
+                            Requirement #4.
+                        </label>
+                    </div>
+                    <div hidden>
+                        <input id="requirement5" type="checkbox" name="requirement5" value="requirement5" class="form-align-input">
+                        <label for="requirement5">
+                            Requirement #5.
+                        </label>
+                    </div>
+                </section>
+                
+                <section class="link-focus" aria-label="Resources"> <!-- Focus [3] — techniques - Indicate link focus. -->
+                    <h2>
+                        Resources
+                    </h2>
+                    <ol>
+                        <li>
+                            <a href="https://accessibility.huit.harvard.edu/">
+                                Harvard Digital Online Accessibility
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://projects.iq.harvard.edu/digital-accessibility-developers">
+                                Digital Accessibility: for front-end developers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://guidelines.hwp.harvard.edu/color-palette">
+                                Harvard color palette
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://webaim.org/resources/contrastchecker/">
+                                WebAIM Contrast Checker
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://accessibility.huit.harvard.edu/faqs">
+                                Harvard University Digital Accessibility Policy FAQs
+                            </a>
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://accessibility.huit.harvard.edu/settlement-caption-requirements?utm_source=SilverpopMailing&utm_medium=email&utm_campaign=NAD%20Settlement%20from%20Anne%20-%20January%202020%20(1)">
+                                        Settlement Caption Requirements
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://siteimprove.com/en-us/core-platform/integrations/browser-extensions/">
+                                Siteimprove Browser Extensions
+                            </a>
+                        </li>
+                        <li style="display:none"> <!-- Focus [3] — techniques - Managing focus and inactive elements. -->
+                            <a href="#">
+                                Example of hidden and not focusable link
+                            </a>
+                        </li>
+                    </ol>
+                </section>
+                
+                <section aria-label="Personal notes">
+                    <h3>
+                        <label for="personal_notes">Personal notes <!-- Input Labels [2] — techniques - Create descriptive input labels. -->
+                            <span aria hidden="true" >
+                                *
+                            </span>
+                        </label>
+                    </h3>
+                    <div>
+                        <textarea id="personal_notes" name="personal_notes" style="width: 100%;" rows="2" aria-required="true"></textarea> <!-- Colors [8] — techniques - Indicate required fields without reliance on colors. -->
+                    </div>
+                </section>
+
+            </main>
+
+            <aside aria-label="Results">
+
+                <h2>
+                    Results
+                </h2>
+
+                <section aria-label="Engagement meter">
+                    <h3>
+                        Engagement meter
+                    </h3>
+                    <div>
+                        <img src="img-engagement_meter.png"
+                            alt="Bar chart showing team engagement as a result of weekly assignment activity"
+                            longdesc="#engagement_meter-longdesc" width="100%">
+                        <div id="engagement_meter-longdesc"> <!-- Images [10] — techniques - Provide useful alternative text. -->
+                            Over a period of five weeks, retrospectives and standups provided the most opportunities for
+                            promoting accessibility and team engagement.
+                        </div>
+                    </div>
+                </section>
+
+                <section aria-label="Techniques into practice meter">
+                    <h3>
+                        Techniques into practice meter
+                    </h3>
+                    <div>
+                        <img src="img-practice_meter.png"
+                            alt="Bar chart showing techniques learned and practiced as a result of weekly assignment activity"
+                            longdesc="#practice_meter-longdesc" width="100%">
+                        <div id="practice_meter-longdesc"> <!-- Images [10] — techniques - Provide useful alternative text. -->
+                            Over a period of five weeks, I found opportunities to implement each of the 10 Essentials at least once.
+                        </div>
+                    </div>
+                </section>
+
+                <section aria-label="AUX integration">
+
+                    <h3>
+                        AUX integration
+                    </h3>
+                    <ul> 
+                        <li>
+                            Week 1 - I suggested accessibility criteria during the sprint retrospective
+                        </li>
+                        <li>
+                            Week 2 - I raised accessibility issues when we reviewed user stories
+                        </li>
+                        <li>
+                            Week 3 - Our Definition of Ready now includes accessibility
+                        </li>
+                    </ul>
+
+                </section>
+
+                <button id="myBtn" aria-label="Trigger accessible dialogue">
+                    Trigger accessible dialogue <!-- Names [5] — technique - Provide accessible names for buttons -->
+                </button>
+
+            </aside>
+
+            <footer>
+                <p style="padding: 0em 0em 0em 1em;">
+                    © 2020 President and Fellows of Harvard College
+                    |
+                    <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" style="color: white;">
+                        Digital Accessibility
+                    </a>
+                </p>
+            </footer>
+
+        </div>
+
+    </body>
+
+</html>
