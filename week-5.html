@@ -1,0 +1,615 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" name="viewport content=”width=device-width, initial-scale=1.0"> <!-- Layout [9] — technique. Responsive. - Enable text resizing. -->
+        <link href="week-5.css" rel="stylesheet">
+
+        <title>Digital Accessibility for front-end developers</title>
+        <meta name="description" content="Activity for Digital Accessibility for front-end developers">
+
+    </head>
+
+    <body>
+
+        <div class="container">
+
+            <header> <!-- Semantic Markup [1] — techniques -->
+                
+                <img src="https://projects.iq.harvard.edu/files/digital-accessibility-developers/files/img_modules.png?m=1579782434"
+                    alt="thematic image" width="100%"> <!-- Images [10] — techniques - Provide useful alternative text. -->
+                
+                <h1> <!-- Semantic Markup [1] — techniques - Use heading structure. -->
+                    Digital Accessibility for front-end developers
+                </h1>
+                
+            </header>
+
+            <section aria-label="Navigation"> <!-- Colors [8] — techniques - Indicate accessible current page without reliance on colors. -->
+                
+                <div class="navigation">
+                    <ul class="navigation">
+                        <li class="navigation"><a href="#" class="navigation" tabindex="0">Week 1</a></li>
+                        <li class="navigation"><a href="#" class="navigation" tabindex="0">Week 2</a></li>
+                        <li class="navigation"><a href="#" class="navigation" tabindex="0">Week 3</a></li>
+                        <li class="navigation"><a href="#" class="navigation" tabindex="0">Week 4</a></li>
+                        <li class="active"><a href="#" class="active" tabindex="-1">Week 5</a></li> <!-- Focus [3] — techniques - Provide focus order for interactive elements. -->
+                        <li class="navigation"><a href="#" class="navigation" tabindex="0">Week 6</a></li>
+                    </ul>
+                </div>
+                
+            </section>
+
+
+
+            <section aria-label="Expandable"> <!-- Keyboard [4] — techniques - Create accessible expandable sections. -->
+
+                <style>
+                    /* style the expandable's button */
+                    [data-expandable] {
+                        display: block;
+                        width: 70%;
+                        text-align: left;
+                        background: #293352;
+                        border: 0;
+                        color: #fff;
+                        padding: 0.25em 0.5em;
+                        margin-bottom: 0.25em;
+                        margin-left: 10%;
+                        margin-right: 15%;
+                    }
+
+                    /* make sure there is a focus style for keyboard accessibility */
+                    [data-expandable]:focus {
+                        outline: 2px solid #005C9C;
+                        outline-offset: 1px;
+                    }
+
+                    /* the arrow using pseudo-content and unicode */
+                    [data-expandable][aria-expanded="false"]::before {
+                        content: '\25b8\0020';
+                    }
+
+                    /* the arrow for the expanded state using pseudo-content and unicode */
+                    [data-expandable][aria-expanded="true"]::before {
+                        content: '\25bE\0020';
+                    }
+
+                    /* pair visual appearance with accessible state  */
+                    .expandable[aria-hidden="true"] {
+                        display: none;
+                    }
+
+                    #section-name {
+                        width: 70%;
+                        margin-left: 15%;
+                        margin-right: 15%;
+                    }
+                </style>
+
+                <h3>
+                    <button data-expandable="section-name" tabindex="0">Title of section</button> <!-- Keyboard [4] — techniques - Create custom controls that are keyboard operable. -->
+                </h3>
+                    <p id="section-name">
+                        Section content tincidunt turpis nec ultrices tristique. Aliquam bibendum metus dignissim dui placerat, sed porta urna
+                        blandit. Ut condimentum magna sit amet nulla finibus vestibulum. Maecenas maximus leo sed neque ornare, eu semper urna
+                        aliquam. Nam luctus enim eros, vel lacinia dolor tincidunt ut. Aenean laoreet pretium blandit.
+                    </p>
+                    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+
+                    <script>
+                        // Keyboard [4] — techniques - Create custom controls that are keyboard operable.
+                        var button = document.getElementById('button');
+                        button.addEventListener('keydown', function (e) {
+                            if (e.keyCode === 13 || e.keyCode === 32) {
+                                e.preventDefault();
+                                this.click();
+                            }
+                        });
+                    </script>
+
+                    <script>
+                        /*!
+                    jQuery a11yExpandable plugin
+                    @name jquery.a11yExpandable.js
+                    @author Heydon (heydon@heydonworks.com or @heydonworks)
+                    @version 1.0
+                    @date 01/01/2013
+                    @category jQuery Plugin
+                    @copyright (c) 2015 (Heydon Pickering)
+                    @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
+                    */
+
+                        (function ($) {
+                            $.fn.a11yExpandable = function () {
+
+                                return this.each(function () {
+
+                                    var elem = $(this);
+                                    var plugin = this;
+
+                                    // set the ARIA state and relationship attributes
+                                    elem.attr({
+                                        'aria-expanded': 'false',
+                                        'aria-controls': elem.attr('data-expandable')
+                                    });
+
+                                    // find the element to expand by id
+                                    var expandable = $('#' + elem.attr('data-expandable')).attr({
+                                        'aria-hidden': 'true',
+                                        'class': 'expandable'
+                                    });
+
+                                    // click handler
+                                    elem.on('click', function () {
+
+                                        // Cast the expanded state as a boolean
+                                        var expanded = $(this).attr('aria-expanded') === 'false' ? false : true;
+
+                                        // Switch the states of aria-expanded and aria-hidden
+                                        elem.attr('aria-expanded', !expanded);
+                                        expandable.attr('aria-hidden', expanded);
+
+                                    });
+
+                                });
+
+                            };
+                        }(jQuery));
+
+                        $('[data-expandable]').a11yExpandable();
+                    </script>  
+                     
+            </section>
+
+            <main> <!-- Semantic Markup [1] — techniques - Create Main Landmark. -->
+                
+                <!-- https://www.scruminc.com/definition-of-ready/ -->
+                <section aria-label="Definition of ready">
+                    <h2>
+                        Definition of ready
+                    </h2>
+
+                    <div class="form-align">
+                        <input id="requirement1" type="checkbox" name="requirement1" value="requirement1" class="form-align-input">
+                        <label for="requirement1">
+                            Each user story or development task defines the business needs. <!-- Input Labels [2] — techniques - Create descriptive input labels. -->
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement2" type="checkbox" name="requirement2" value="requirement2" class="form-align-input">
+                        <label for="requirement2">
+                            Each user story or development task defines the user needs, including accessibility.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement3" type="checkbox" name="requirement3" value="requirement3" class="form-align-input">
+                        <label for="requirement3">
+                            Each user story is described with a short, simple description of a feature told from the
+                            perspective of the person who desires the new capability:
+    <pre>"As a &lt;type of user&gt;, 
+    I want &lt;some goal&gt; 
+    so that &lt;some reason&gt;."</pre>
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement4" type="checkbox" name="requirement4" value="requirement4" class="form-align-input">
+                        <label for="requirement4">
+                            Each user story or development task defines the necessary effort (investigation, research,
+                            design, etc.) and artifacts (findings, wireframes, prototypes).
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement5" type="checkbox" name="requirement5" value="requirement5" class="form-align-input">
+                        <label for="requirement5">
+                            Each user story or development task defines the acceptance criteria, which confirms when the
+                            user story is completed by meeting the above requirements.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement6" type="checkbox" name="requirement6" value="requirement6" class="form-align-input">
+                        <label for="requirement6">
+                            The entire team meets to understand each user story or development task.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement7" type="checkbox" name="requirement7" value="requirement7" class="form-align-input">
+                        <label for="requirement7">
+                            The team estimates the effort needed for each user story or development task to be completed within one sprint.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement8" type="checkbox" name="requirement8" value="requirement8" class="form-align-input">
+                        <label for="requirement8">
+                            The team eliminates any dependencies.
+                        </label>
+                    </div>
+                </section>
+
+                <section aria-label="Definition of done">
+                    <h2>
+                        Definition of done
+                    </h2>
+                    <div class="form-align">
+                        <input id="requirement1" type="checkbox" name="requirement1" value="requirement1" class="form-align-input">
+                        <label for="requirement1">
+                            Development tasks have been implemented according to the acceptance criteria.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement2" type="checkbox" name="requirement2" value="requirement2" class="form-align-input">
+                        <label for="requirement2">
+                            Development tasks have been tested to meet the acceptance criteria.
+                        </label>
+                    </div>
+                    <div class="form-align">
+                        <input id="requirement3" type="checkbox" name="requirement3" value="requirement3" class="form-align-input">
+                        <label for="requirement3">
+                            Code can be moved to "production" and viewed by the client.
+                        </label>
+                    </div>
+                    <div hidden>
+                        <input id="requirement4" type="checkbox" name="requirement4" value="requirement4" class="form-align-input">
+                        <label for="requirement4">
+                            Requirement #4.
+                        </label>
+                    </div>
+                    <div hidden>
+                        <input id="requirement5" type="checkbox" name="requirement5" value="requirement5" class="form-align-input">
+                        <label for="requirement5">
+                            Requirement #5.
+                        </label>
+                    </div>
+                </section>
+                
+                <section class="link-focus" aria-label="Resources"> <!-- Focus [3] — techniques - Indicate link focus. -->
+                    <h2>
+                        Resources
+                    </h2>
+                    <ol>
+                        <li>
+                            <a href="https://accessibility.huit.harvard.edu/">
+                                Harvard Digital Online Accessibility
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://projects.iq.harvard.edu/digital-accessibility-developers">
+                                Digital Accessibility: for front-end developers
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://guidelines.hwp.harvard.edu/color-palette">
+                                Harvard color palette
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://webaim.org/resources/contrastchecker/">
+                                WebAIM Contrast Checker
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://accessibility.huit.harvard.edu/faqs">
+                                Harvard University Digital Accessibility Policy FAQs
+                            </a>
+                            <ul>
+                                <li>
+                                    <a
+                                        href="https://accessibility.huit.harvard.edu/settlement-caption-requirements?utm_source=SilverpopMailing&utm_medium=email&utm_campaign=NAD%20Settlement%20from%20Anne%20-%20January%202020%20(1)">
+                                        Settlement Caption Requirements
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="https://siteimprove.com/en-us/core-platform/integrations/browser-extensions/">
+                                Siteimprove Browser Extensions
+                            </a>
+                        </li>
+                        <li style="display:none"> <!-- Focus [3] — techniques - Managing focus and inactive elements. -->
+                            <a href="#">
+                                Example of hidden and not focusable link
+                            </a>
+                        </li>
+                    </ol>
+                </section>
+                
+                <section aria-label="Personal notes">
+                    <h3>
+                        <label for="personal_notes">Personal notes <!-- Input Labels [2] — techniques - Create descriptive input labels. -->
+                            <span aria hidden="true" >
+                                *
+                            </span>
+                        </label>
+                    </h3>
+                    <div>
+                        <textarea id="personal_notes" name="personal_notes" style="width: 100%;" rows="2" aria-required="true"></textarea> <!-- Colors [8] — techniques - Indicate required fields without reliance on colors. -->
+                    </div>
+                </section>
+
+            </main>
+
+            <aside aria-label="Results">
+
+                <h2>
+                    Results
+                </h2>
+
+                <section aria-label="Engagement meter">
+                    <h3>
+                        Engagement meter
+                    </h3>
+                    <div>
+                        <img src="img-engagement_meter.png"
+                            alt="Bar chart showing team engagement as a result of weekly assignment activity"
+                            longdesc="#engagement_meter-longdesc" width="100%">
+                        <div id="engagement_meter-longdesc"> <!-- Images [10] — techniques - Provide useful alternative text. -->
+                            Over a period of five weeks, retrospectives and standups provided the most opportunities for
+                            promoting accessibility and team engagement.
+                        </div>
+                    </div>
+                </section>
+
+                <section aria-label="Techniques into practice meter">
+                    <h3>
+                        Techniques into practice meter
+                    </h3>
+                    <div>
+                        <img src="img-practice_meter.png"
+                            alt="Bar chart showing techniques learned and practiced as a result of weekly assignment activity"
+                            longdesc="#practice_meter-longdesc" width="100%">
+                        <div id="practice_meter-longdesc"> <!-- Images [10] — techniques - Provide useful alternative text. -->
+                            Over a period of five weeks, I found opportunities to implement each of the 10 Essentials at least once.
+                        </div>
+                    </div>
+                </section>
+
+                <section aria-label="AUX integration">
+
+                    <h3>
+                        AUX integration
+                    </h3>
+                    <ul> 
+                        <li>
+                            Week 1 - I suggested accessibility criteria during the sprint retrospective
+                        </li>
+                        <li>
+                            Week 2 - I raised accessibility issues when we reviewed user stories
+                        </li>
+                        <li>
+                            Week 3 - Our Definition of Ready now includes accessibility
+                        </li>
+                        <li>
+                            Week 4 - I recommended a number of Essentials for two new user stories
+                        </li>
+                        <li>
+                            Week 5 - Accessibility is now an integral part of our user story definition
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- https://www.w3.org/TR/wai-aria-practices/examples/alert/alert.html -->
+                <section aria-label="Modal exercise">
+                    <button id="myBtn" aria-label="Trigger accessible dialogue">
+                        Trigger accessible dialogue <!-- Names [5] — technique - Provide accessible names for buttons -->
+                    </button>
+                    <!-- The Modal -->
+                    <div id="myModal" class="modal">
+                        
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <h2>
+                                Subscribe to our newsletter
+                            </h2>
+                            <!-- CSS for form -->
+                            <style>
+                                label {
+                                display: block;
+                                }
+
+                                input {
+                                margin-top: 0.5em;
+                                border: 2px solid;
+                                display: block;
+                                width: 100%;
+                                padding: 0.25em;
+                                }
+
+                                input:focus, .selected, [role="option"]:hover {
+                                background: #ddddff;
+                                color: #000;
+                                border-color: #999;
+                                cursor: pointer;
+                                }
+
+                                .suggestions-help {
+                                position: absolute;
+                                left: 9999px;
+                                }
+
+                                .suggestions {
+                                position: relative;
+                                }
+
+                                [role="listbox"] {
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 70%;
+                                }
+
+                                [role="option"] {
+                                padding: 0.25em;
+                                color: #999;
+                                border: 2px solid;
+                                border-top: 0;
+                                }
+                            </style>
+
+                            <form>
+                                <p>
+                                    <label for="name">Name</label>
+                                    <input id="name">
+                                </p>
+                                <p>
+                                    <label for="pro">Profession</label>
+                                    <div class="suggestions-container">
+                                        <div class="suggestions-help" role="status" aria-live="polite"></div>
+                                        <input id="pro" data-suggest type="text" autocomplete="off" aria-autocomplete="list">
+                                        <div class="suggestions"></div>
+                                    </div>
+                                </p>
+                            </form>
+                            <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+                            <p><button class="close">Subscribe</button></p>
+                        </div>
+                    
+                    </div>
+                </section>
+
+            </aside>
+
+            <footer>
+                <p style="padding: 0em 0em 0em 1em;">
+                    © 2020 President and Fellows of Harvard College
+                    |
+                    <a href="https://accessibility.huit.harvard.edu/digital-accessibility-policy" style="color: white;">
+                        Digital Accessibility
+                    </a>
+                </p>
+            </footer>
+
+        </div>
+
+        <!-- Javascript for modal -->
+
+        <script> // Keyboard [4] — techniques - Create accessible modal dialogs.
+
+            // Get the modal
+
+            var modal = document.getElementById("myModal");
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("myBtn");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on the button, close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+
+            // close modal menu if esc key is used
+            jQuery(document).keyup(function(ev){
+                if(ev.keyCode == 27) {
+                modal.style.display = "none";
+                }
+            });
+        </script>
+
+        <!-- JavaScript for form -->
+        
+        <script> // Roles [6] — technique - Autocomplete input controls.
+            
+            var pro = [
+            'manager',
+            'developer',
+            'content creator'
+            ];
+
+            $('[data-suggest]').on('input', function() {
+            
+            var input = $(this);
+            var scope = input.parents('.suggestions-container');
+            
+            $('.suggestions', scope).html('<div role="listbox"></div>');
+            $('.suggestions-help', scope).empty();
+            
+            var value = input.val();
+            var suggestions = _.filter(pro.sort(), function(pet) { 
+                return !pet.indexOf(value); });
+            
+            if (value) {
+                $.each(suggestions, function(k, v) {
+                $('[role="listbox"]', scope).append(
+                    '<div role="option">'+v+'</div>'
+                );
+                });
+                $('[role="listbox"]  [role="option"]', scope).each(function() {
+                $(this).attr('id', input.attr('id') + '-' + $(this).index());
+                });
+                if (!_.isEmpty(suggestions)) {
+                $('.suggestions-help', scope).text(
+                'There are '+suggestions.length+' suggestions. Use the up and down arrows to browse.');
+                }
+            }
+            
+            input.on('keydown', function(e) {
+                if (e.keyCode == 40) {
+                e.preventDefault();
+                $('[role="listbox"]', scope)
+                    .attr('tabindex', '0')
+                    .focus();
+                $('[role="listbox"]').attr('aria-activedescendant', $('[role="listbox"] [role="option"]:first-child', scope).attr('id'));
+                $('[role="listbox"] [role="option"]:first-child').addClass('selected');
+                $('#pro').val($('.selected').text());
+                }
+                if (e.keyCode == 9) {
+                $('[role="listbox"]', scope).remove();
+                }
+            });
+
+            $('[role="listbox"]', scope).on('keydown', function(e) {
+                if (e.keyCode == 13) {
+                e.preventDefault();
+                e.stopPropagation();
+                $('#pro').focus();
+                }
+                var newOption;
+                if (e.keyCode == 40) {
+                e.preventDefault();
+                newOption = $('.selected').next();
+                }
+                if (e.keyCode == 38) {
+                e.preventDefault();
+                newOption = $('.selected').prev();
+                }
+                if (newOption.length) {
+                $('.selected').removeClass('selected');
+                newOption.addClass('selected');
+                $(this).attr('aria-activedescendant', newOption.attr('id'));
+                $('#pro').val($('.selected').text());
+                }
+            });
+
+            $('[role="listbox"]', scope).on('blur', function() {
+                $(this).children().remove();
+            });
+            
+            $('[role="option"]', scope).on('click', function() {
+                $('[data-suggest]', scope).val($(this).text())
+                .focus();
+                $('[role="listbox"]', scope).remove();
+            });
+            
+            });
+        </script>
+
+    </body>
+
+</html>
