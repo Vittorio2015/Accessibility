@@ -1,0 +1,63 @@
+/* Week 1 CSS */
+    /* Responsive columns */
+    @media screen and (max-width: 400px) {
+        main {
+            float: none;
+            margin-right: 0;
+            width: auto;
+        }
+    }
+
+    html {
+        font-size: 100%;
+        }
+    
+    p {
+        font-size: 1em;
+        line-height: 1.5; /* Layout [9] — technique. Responsive. - Enable text resizing. */
+    }
+
+    h1 {
+        color: #A51C30;
+        padding: 0em 0em 0em 1em;
+    }
+
+    h2, h3 {
+        color: #3A76B6;
+        margin: 1em .5em .25em 0em;
+    }
+
+    .container {
+        overflow: hidden;
+        margin: auto;
+        width: 70%;
+        border: solid #A51C30 1px;
+    }
+
+    header {
+        overflow: hidden;
+        margin: auto;
+        width: 100%;
+    }
+
+    main {
+        width: 20em;
+        padding: 1em;
+        float: left;
+    }
+
+    aside {
+        overflow: hidden;
+        margin: auto;
+        width: 20em;
+        padding: 1em;
+    }
+
+    footer {
+        overflow: hidden;
+        margin: auto;
+        width: 100%;
+        color: #fff;
+        background-color: #A51C30;
+    }
+    
